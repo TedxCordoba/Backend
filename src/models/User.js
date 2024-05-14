@@ -19,6 +19,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        email_verified: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false
@@ -71,5 +75,9 @@ module.exports = (sequelize) => {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
+        isActive: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
+        }
     }, {timestamps: false});
 }
