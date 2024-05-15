@@ -23,9 +23,13 @@ module.exports = (sequelize) => {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: true,
           },
-        sponsors: {
+        imageBanner: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+        },
+        sponsors: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allowNull: true
         },
     }, {timestamps: false});
 }
