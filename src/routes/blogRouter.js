@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { createBlogHandler } = require("../handlers/Blog/createBlogHandler");
 const { updateBlogHandler } = require("../handlers/Blog/updateBlogHandler");
 const { getBlogByIdHandler } = require("../handlers/Blog/getBlogByIdHandler");
-// const { deleteBlogHandler } = require("../handlers/Blog/deleteBlogHandler");
+const { deleteBlogHandler } = require("../handlers/Blog/deleteBlogHandler");
 const { getAllBlogsHandler } = require("../handlers/Blog/getAllBlogsHandler");
 
 const blogRouter = Router();
@@ -20,7 +20,7 @@ blogRouter.put("/:id", updateBlogHandler)
 
 
 //DELETE
-//blogRouter.delete("/:id", deleteBlogHandler)
+blogRouter.delete("/:id", deleteBlogHandler)
 
 
 module.exports = blogRouter;
