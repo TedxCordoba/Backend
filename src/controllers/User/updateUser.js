@@ -1,17 +1,20 @@
-const {User} = require('../../db');
+const { User } = require("../../db");
+const { Op } = require("sequelize");
 
-const updateUser = async (id, userData) => {
-    try {
-        const user = await User.findByPk(id);
-        if (!user) {
-            throw new Error('El usuario no existe');
-        }
-        await user.update(userData);
-        return user;
+const updateUser = async (username, userData) => {
+  try {
+    const user = await User.findOne({
+        where: {userName: {[Op.iLike]: `%${username}%`}},
+      attributes: { exclude: ["password"] },
+    });
+    if (!user) {
+      throw new Error("El usuario no existe");
     }
-    catch (error) {
-        throw new Error(error.message);
-    }
-}
+    await user.update(userData);
+    return user;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
-module.exports = {updateUser};
+module.exports = { updateUser };

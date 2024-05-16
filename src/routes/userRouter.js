@@ -19,7 +19,7 @@ userRouter.post("/", createUserHandler);
 
 //PUT
 
-userRouter.put("/:id", updateUserHandler);
+userRouter.put("/:username", updateUserHandler);
 userRouter.put("/:id", updateUserPasswordHandler);
 
 //DELETE
