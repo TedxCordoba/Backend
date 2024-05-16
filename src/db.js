@@ -57,8 +57,8 @@ Talk.belongsToMany(Category, { through: 'CategoryTalk' });
 Category.belongsToMany(Blog, { through: 'CategoryBlog' });
 Blog.belongsToMany(Category, { through: 'CategoryBlog' });
 
-// Category.hasMany(Podcast);
-// Podcast.belongsTo(Category);
+Category.belongsToMany(Podcast, { through: 'CategoryPodcast' });
+Podcast.belongsToMany(Category, { through: 'CategoryPodcast' });
 
 //User
 
@@ -68,8 +68,8 @@ Talk.belongsTo(User);
 User.hasMany(Blog);
 Blog.belongsTo(User);
 
-// User.hasMany(Podcast);
-// Podcast.belongsTo(User);
+User.hasMany(Podcast);
+Podcast.belongsTo(User);
 
 // User.belongsToMany(Event, { through: UserEvent });
 // Event.belongsToMany(User, { through: UserEvent });
