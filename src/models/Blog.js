@@ -17,6 +17,10 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
       },
+      blog: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       date: {
         type: DataTypes.DATE,
         allowNull: true,

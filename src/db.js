@@ -54,8 +54,8 @@ const { User, Talk, Blog, Category, Event, Podcast } = sequelize.models;
 Category.belongsToMany(Talk, { through: 'CategoryTalk' });
 Talk.belongsToMany(Category, { through: 'CategoryTalk' });
 
-// Category.hasMany(Blog);
-// Blog.belongsTo(Category);
+Category.belongsToMany(Blog, { through: 'CategoryBlog' });
+Blog.belongsToMany(Category, { through: 'CategoryBlog' });
 
 // Category.hasMany(Podcast);
 // Podcast.belongsTo(Category);
@@ -65,8 +65,8 @@ Talk.belongsToMany(Category, { through: 'CategoryTalk' });
 User.hasMany(Talk);
 Talk.belongsTo(User);
 
-// User.hasMany(Blog);
-// Blog.belongsTo(User);
+User.hasMany(Blog);
+Blog.belongsTo(User);
 
 // User.hasMany(Podcast);
 // Podcast.belongsTo(User);
