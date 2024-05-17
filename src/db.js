@@ -71,8 +71,8 @@ Blog.belongsTo(User);
 User.hasMany(Podcast);
 Podcast.belongsTo(User);
 
-// User.belongsToMany(Event, { through: UserEvent });
-// Event.belongsToMany(User, { through: UserEvent });
+User.belongsToMany(Event, { through: 'UserEvent' });
+Event.belongsToMany(User, { through: 'UserEvent' });
 
 module.exports = {
   ...sequelize.models,

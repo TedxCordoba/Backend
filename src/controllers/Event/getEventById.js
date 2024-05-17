@@ -1,15 +1,21 @@
-const { Event } = require('../../db');
+const { Event, User } = require('../../db');
 
 const getEventById = async (id) => {
-    try {
-        const event = await Event.findByPk(id);
-        if (!event) {
-            throw new Error('El evento no existe');
+
+    const eventSearched = await Event.findByPk(id, {
+        include: {
+            model: User, // Especifica el modelo asociado
+            as: 'Users', // Especifica el alias de la asociación
+            attributes: ['id', 'name','image'], // Especifica los atributos que deseas seleccionar
+            through: { attributes: [] } // Especifica que no deseas incluir los atributos de la tabla de unión
         }
-        return event;
-    } catch (error) {
-        throw new Error(error.message);
+    });
+
+    if (!eventSearched) {
+        throw new Error("El blog solicitado no existe.");
     }
+
+    return eventSearched;
 };
 
 module.exports = { getEventById };

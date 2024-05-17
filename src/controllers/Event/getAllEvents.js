@@ -1,12 +1,16 @@
-const { Event } = require("../../db");
+const { Event, User } = require("../../db");
 
 const getAllEvents = async () => {
-    try {
-        const events = await Event.findAll();
-        return events;
-    } catch (error) {
-        throw new Error(error.message);
-    }
+    const events = await Event.findAll({
+        include: {
+            model: User,
+            as: 'Users',
+            attributes: ['id', 'name', 'image'],
+            through: { attributes: [] }
+        }
+    });
+
+    return events;
     };
 
 module.exports = { getAllEvents };
